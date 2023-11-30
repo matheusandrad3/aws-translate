@@ -30,6 +30,13 @@ public class PDFDocument {
     /*
     Depending on the input document you can adjust the initial font size and the width and height of the extracted text
      */
+
+    private String sanitizeText(String input) {
+        // Substitua o caractere problemático (U+02BC) por um apóstrofo regular
+        return input.replace('\u02BC', '\'');
+        // Você pode adicionar mais lógica de substituição conforme necessário
+    }
+
     private FontInfo calculateFontSize(String text, float bbWidth, float bbHeight,  PDFont font) throws IOException {
         int fontSize = 20;
         float textWidth = font.getStringWidth(text) / 1000 * fontSize;
@@ -71,9 +78,13 @@ public class PDFDocument {
             PDPageContentStream contentStream = new PDPageContentStream(document, page, PDPageContentStream.AppendMode.APPEND, false);
 
             for (TextLine cline : lines) {
-                String clinetext = cline.text;
-                //clinetext = removeNonWinAnsiCharactersAndFixNonAsciiSingle(clinetext);
                 String clinetextOriginal = cline.originalText;
+                String clinetext = cline.text;
+
+               // String clinetext = sanitizeText(cline.text);  //para traduzir com imagem
+                //clinetext = removeNonWinAnsiCharactersAndFixNonAsciiSingle(clinetext);
+               // String clinetextOriginal = sanitizeText(cline.originalText); // para traduzir com imagem
+
                 //clinetextOriginal = removeNonWinAnsiCharactersAndFixNonAsciiSingle(clinetextOriginal);
                 FontInfo fontInfo = calculateFontSize(clinetext.length() <= clinetextOriginal.length() ? clinetextOriginal : clinetext, (float) cline.width * width, (float) cline.height * height, font);
                 //config for no images
@@ -121,10 +132,12 @@ public class PDFDocument {
         contentStream.setRenderingMode(RenderingMode.FILL);
 
         for (TextLine cline : lines){
+//            String clinetext = sanitizeText(cline.text); //para traduzir com imagem
+//            String clinetextOriginal = sanitizeText(cline.originalText); para traduzir com imagem
+
             String clinetext = cline.text;
-               
-                String clinetextOriginal = cline.originalText;
-             
+
+            String clinetextOriginal = cline.originalText;
                
                 FontInfo fontInfo = calculateFontSize(clinetextOriginal, (float) cline.width * width, (float) cline.height * height, font);
                 //config to include original document structure - overlay with original

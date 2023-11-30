@@ -8,7 +8,7 @@
     <version>2.0</version>
     <properties>
         <java.version>11</java.version>
-        <aws.java.sdk.version>2.20.81</aws.java.sdk.version>
+        <aws.java.sdk.version>2.21.9</aws.java.sdk.version>
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -64,13 +64,11 @@
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>s3</artifactId>
-            <version>2.20.43</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/software.amazon.awssdk/dynamodb -->
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>dynamodb</artifactId>
-            <version>2.21.9</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.openjfx/javafx-swing -->

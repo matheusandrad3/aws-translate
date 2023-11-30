@@ -25,8 +25,8 @@ public class Demo {
                 String caminho = uploader.escolherCaminho(primaryStage);
 
                 DemoPdfFromLocalPdf localPdf = new DemoPdfFromLocalPdf();
-                String caminhoPdfTraduzido = localPdf.run(caminho, "./documents/PdfTraduzido-" + destinationLanguage + ".pdf", sourceLanguage, destinationLanguage, true);
-                //String generatedFilePathMin =  localPdf.run("./documents/SampleInput.pdf", "./documents/SampleOutput-min-" + destinationLanguage + ".pdf ", sourceLanguage, destinationLanguage, false);
+                String caminhoPdfTraduzido = localPdf.run(caminho, "./documents/testeCompleto01" + destinationLanguage + ".pdf", sourceLanguage, destinationLanguage, true);
+                //String generatedFilePathMin =  localPdf.run(caminho, "./documents/teste01" + destinationLanguage + ".pdf", sourceLanguage, destinationLanguage, false);
 
                 uploader.uploadFile(caminhoPdfTraduzido);
 

@@ -58,7 +58,7 @@
     </dependencies>
   </dependencyManagement>
   <properties>
-    <aws.java.sdk.version>2.20.81</aws.java.sdk.version>
+    <aws.java.sdk.version>2.21.9</aws.java.sdk.version>
     <java.version>11</java.version>
   </properties>
 </project>
